@@ -1,0 +1,91 @@
+
+/*CSS untuk profil wisata*/
+.container {
+    width: 1000px;
+    margin-inline: auto;
+    background-color: #5197d8;
+    height: 380px;
+}
+.lesson-wrapper {
+    background-color: #5197d8;
+  }
+  
+  .heading {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: black;
+  }
+  
+  .heading h2 {
+    font-weight: normal;
+    text-align: center;
+  }
+  
+  .lesson {
+    float: left;
+    width: 25%;
+    font-size: 20px;
+    text-align: center;
+  }
+  
+  .lesson-icon {
+    position: relative;
+    
+  }
+  
+
+/*CSS untuk Formulir Pemesanan*/
+.container-2 {
+    margin-top: 0px;
+    margin-inline: auto;
+    width: 600px;
+    height: 715px;
+    background-color: #5197d8;
+}
+
+.title {
+    text-align: center;
+}
+
+.form {
+    padding-inline: 50px;
+}
+
+.form-input {
+    width: 300px;
+    background-color: bisque;
+}
+
+.btn-wrapper {
+    text-align: center;
+}
+
+.btn-pesan {
+    padding: 15px;
+    background-color: #C7BCA1;
+    border-radius: 5px;
+}
+
+.form-label {
+    width: 250px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#hasil {
+    padding-inline: 50px;
+}
+
+/*CSS Untuk Video*/
+.video {
+    width: 1340px;
+}
+
+.video-list {
+    float: left;
+    width: 32%;
+    position: relative;
+    background-color: #5197d8;
+    text-align: center;
+    padding-bottom: 10px;
+}

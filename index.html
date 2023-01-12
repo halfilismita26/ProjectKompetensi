@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ayo Liburan</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  </head>
+  <body>
+        <div class="lesson-wrapper">
+            <!--Untuk menampilkan gambar-->
+            <div class="container">
+                <div class="heading">
+                    <h2>Pilih tempat liburan terbaik Anda!</h2>
+                </div>
+                <div class="lessons">
+                    <div class="lesson">
+                        <div class="lesson-icon">
+                            <img src="Sabang.jpg" width="300px" height="200px" text-align="center">
+                        </div>
+                        <p>Pulau Sabang</p>
+                        <p>Sabang</p>
+                        <p>Rp. 100.000</p>
+                    </div>
+                    <div class="lesson">
+                        <div class="lesson-icon">
+                            <img src="waterboom.jpg" width="300px" height="200px" text-align="center">
+                        </div>
+                        <p>Waterboom Kuta Malaka</p>
+                        <p>Kuta Malaka</p>
+                        <p>Rp. 70.000</p>
+                    </div>
+                    <div class="lesson">
+                        <div class="lesson-icon">
+                        <img src="museum.jpg"width="300px" height="200px" text-align="center">
+                        </div>
+                        <p>Museum Tsunami Aceh</p>
+                        <p>Banda Aceh</p>
+                        <p>Rp. 50.000</p>
+                    </div>
+                    <div class="lesson">
+                        <div class="lesson-icon">
+                        <img src="lamreh.jpg"width="300px" height="200px" text-align="center">
+                        </div>
+                        <p>Lamreh</p>
+                        <p>Banda Aceh</p>
+                        <p>Rp. 80.000</p>
+                    </div>
+                </div>
+            </div>
+            <!--Untuk Form Pemesanan-->
+            <div class="container-2">
+                <h2 class="title">Form Pemesanan</h2>
+                <form class="form">
+                    <table>
+                        <tr>
+                            <td class="form-label">
+                                <label for="nama">Nama Lengkap</label>
+                            </td>
+                            <td>
+                                <input type="text" id="nama" class="form-input">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-label">
+                                <label for="nomor_identitas">Nomor Identitas</label>
+                            </td>
+                            <td>
+                                <input type="text" id="nomor_identitas" class="form-input">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-label">
+                                <label for="nomor_hp">Nomor HP</label>
+                            </td>
+                            <td>
+                                <input type="text" id="nomor_hp" class="form-input">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-label">
+                                <label for="tempat_wisata">Tempat Wisata</label>
+                            </td>
+                            <td>
+                                <select id="tempat_wisata" class="form-input">
+                                    <option value="100000">Pulau Sabang - Rp 100.000</option>
+                                    <option value="70000">Waterboom - Rp 70.000</option>
+                                    <option value="50000">Museum Tsunami Aceh - Rp 50.000</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-label">
+                                <label for="tanggal">Tanggal Kunjungan</label>
+                            </td>
+                            <td>
+                                <input type="date" id="tanggal" class="form-input">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-label">
+                                <label for="dewasa">Dewasa</label>
+                            </td>
+                            <td>
+                                <input type="number" id="dewasa" min="0" class="form-input">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-label">
+                                <label for="anak_anak">Anak-anak(Diskon 50%)</label>
+                            </td>
+                            <td>
+                                <input type="number" id="anak_anak" min="0" class="form-input">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-label">
+                                <label>Harga Tiket</label>
+                            </td>
+                            <td>
+                                <div id="harga_tiket">Rp 0</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-label">
+                                <label>Total Bayar</label>
+                            </td>
+                            <td>
+                                <div id="harga_bayar">Rp 0</div>
+                            </td>
+                        </tr>
+                    </table>
+    
+                    <div class="btn-wrapper">
+                        <button type="button" class="btn-pesan" id="btn-pesan">Pesan Tiket</button>
+                    </div>
+                </form>
+    
+                <div id="hasil">
+                    
+                </div>
+            </div>
+            <!--Untuk menguhubungkan ke JS-->
+            <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+                integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+        <!--Untuk JS-->
+        <script>
+            //Mendeklarasikan data dengan array
+            let data = []
+            data['nama'] = ''
+            data['nomor_identitas'] = ''
+            data['nomor_hp'] = ''
+            data['tempat_wisata'] = ''
+            data['harga_tiket'] = $('#tempat_wisata').val()
+            data['tanggal'] = ''
+            data['jumlah_dewasa'] = 0
+            data['jumlah_anak'] = 0
+            data['harga_bayar'] = 0
+        
+            $('#harga_tiket').text(`Rp ${data['harga_tiket']}`)
+        
+            $('#tempat_wisata').on('change', function(){
+                data['harga_tiket'] = $('#tempat_wisata').val()
+                data['tempat_wisata'] = $('#tempat_wisata option:selected').text().split(' - ')[0]
+                $('#harga_tiket').text(`Rp ${data['harga_tiket']}`)
+            })
+        
+            $('#dewasa').on('input', function () {
+                data['jumlah_dewasa'] = $('#dewasa').val()
+                data['harga_bayar'] = data['jumlah_dewasa'] * data['harga_tiket']
+                $('#harga_bayar').text(`Rp ${data['harga_bayar']}`)
+            })
+        
+            $('#anak_anak').on('input', function () {
+                data['jumlah_anak'] = $('#anak_anak').val()
+                data['harga_bayar'] = data['harga_bayar'] + data['jumlah_anak'] * data['harga_tiket'] * 0.5
+                $('#harga_bayar').text(`Rp ${data['harga_bayar']}`)
+            })
+        
+            $('#btn-pesan').on('click', function(){
+                data['nama'] = $('#nama').val()
+                data['nomor_identitas'] = $('#nomor_identitas').val()
+                data['nomor_hp'] = $('#nomor_hp').val()
+                data['tanggal'] = $('#tanggal').val()
+                data['jumlah_dewasa'] = $('#dewasa').val()
+                data['jumlah_anak'] = $('#anak_anak').val()
+                
+                //Untuk menampilkan hasil input form pemesanan
+                $('#hasil').html(`
+                    <table>
+                        <tr>
+                            <td>Nama Pemesan</td>
+                            <td>: ${data['nama']}</td>
+                        </tr>
+                        <tr>
+                            <td>Nomor Identitas</td>
+                            <td>: ${data['nomor_identitas']}</td>
+                        </tr>
+                        <tr>
+                            <td>No HP</td>
+                            <td>: ${data['nomor_hp']}</td>
+                        </tr>
+                        <tr>
+                            <td>Tempat Wisata</td>
+                            <td>: ${data['tempat_wisata']}</td>
+                        </tr>
+                        <tr>
+                            <td>Tanggal Kunjungan</td>
+                            <td>: ${data['tanggal']}</td>
+                        </tr>
+                        <tr>
+                            <td>Pengujung Dewasa</td>
+                            <td>: ${data['jumlah_dewasa']} Orang</td>
+                        </tr>
+                        <tr>
+                            <td>Pengujung Anak-anak</td>
+                            <td>: ${data['jumlah_anak']} Orang</td>
+                        </tr>
+                        <tr>
+                            <td>Harga Tiket</td>
+                            <td>: Rp ${data['harga_tiket']}</td>
+                        </tr>
+                        <tr>
+                            <td>Total Bayar</td>
+                            <td>: Rp ${data['harga_bayar']}</td>
+                        </tr>
+                    </table>
+                `)
+            })
+        </script>
+
+            <div class="video">
+                <div class="video-list">
+                    <iframe width="380px" height="200px" src="https://www.youtube.com/embed/MQWtFxD6Knc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <p>Cuplikan Pulau Sabang</p>
+                </div>
+                <div class="video-list">
+                    <iframe width="380px" height="200px" src="https://www.youtube.com/embed/LDKku4Pk1rE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <p>Cuplikan Waterboom Kuta Malaka</p>
+                </div>
+                <div class="video-list">
+                    <iframe width="380px" height="200px" src="https://www.youtube.com/embed/FWzQZkmXfQs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <p>Cuplikan Museum Tsunami Aceh</p>
+                </div>
+            </div>
+        </div>
+  </body>
+</html>
